@@ -5,7 +5,7 @@ if (process.argv.length >= 4) {
   const data = JSON.parse(fs.readFileSync(path.resolve(process.cwd(), process.argv[2]), "utf8"));
 
   let processed = data.filter(bus => {
-    return (bus.locations && bus.locations.length === 1) && bus.locations[0].length === 2;
+    return (bus.locations && bus.locations.length === 1) && (bus.locations[0].length === 2 || bus.locations[0] === "AUD");
   }).map(bus => {
     return {
       location: bus.locations[0],
